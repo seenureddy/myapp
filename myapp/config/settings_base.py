@@ -3,8 +3,7 @@ import os
 DEBUG = True
 TEMPLATE_DEBUG = True
 
-PROJECT_PATH = os.path.join(os.path.dirname(__file__), os.pardir)
-PROJECT_PATH = os.path.abspath(PROJECT_PATH)
+PROJECT_PATH = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
 )
