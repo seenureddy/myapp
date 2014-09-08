@@ -2,7 +2,7 @@
 
 import os
 
-DEBUG = True
+DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
 PROJECT_PATH = os.path.join(os.path.dirname(__file__), os.pardir)
