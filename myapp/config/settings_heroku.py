@@ -1,6 +1,6 @@
 from .settings_base import *
 
-DEBUG = False
+DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 import dj_database_url
 DATABASES['default'] = dj_database_url.config()
