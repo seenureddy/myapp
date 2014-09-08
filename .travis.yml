@@ -7,11 +7,9 @@ python:
 install: 
     - "pip install -r requirements.txt" 
 
-env:
-	- some_key = travis
 
-before_script:
-    - psql -U postgres -f fb.sql 
+#before_script:
+ #   - psql -U postgres -f fb.sql 
 
 
 # command to run tests
