@@ -1,7 +1,7 @@
 Django==1.5
 MySQL-python==1.2.5
 argparse==1.2.1
-distribute==0.6.24
+distribute==0.6.21
 dj-database-url==0.3.0
 dj-static==0.0.6
 django-debug-toolbar==1.2.1
