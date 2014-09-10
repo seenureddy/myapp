@@ -17,7 +17,6 @@ How to deploy django app using Gunicorn :
 # decide what requests it wants to serve and what requests it wants to pass to some other server.
 # In our case, we want nginx to serve requests for static resources and to pass any other request to 
 # gunicorn.
-
 In this project to deploy static files we use Nginx:
 
     To install nginx on your local machine use
@@ -132,3 +131,5 @@ Depoly on a publically acessible server:
 
 
         
+=======
+>>>>>>> 5a8699971c9e853d237bf2385cca80117217996e
