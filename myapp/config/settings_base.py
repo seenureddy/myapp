@@ -1,7 +1,7 @@
 import os
 
-DEBUG = True
-TEMPLATE_DEBUG = True
+DEBUG = False
+TEMPLATE_DEBUG = DEBUG
 
 PROJECT_PATH = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
 ADMINS = (
