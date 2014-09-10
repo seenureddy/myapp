@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-=======
-myapp
-=====
->>>>>>> 5a86999... Create README.md
 How to deploy django app using Gunicorn :
 
 	To install gunicorn on your local machine use 
@@ -18,14 +13,12 @@ How to deploy django app using Gunicorn :
 	    gunicorn myapp.wsgi:application --bind=127.0.0.1:8001 #Here i use 8001 you can change
 
 
-<<<<<<< HEAD
+
 # Nginx acts as a reverse proxy here. All our request will initially come to nginx. It's for nginx to 
 # decide what requests it wants to serve and what requests it wants to pass to some other server.
 # In our case, we want nginx to serve requests for static resources and to pass any other request to 
 # gunicorn.
 
-=======
->>>>>>> 5a86999... Create README.md
 In this project to deploy static files we use Nginx:
 
     To install nginx on your local machine use
@@ -89,8 +82,6 @@ Depoly on a publically acessible server:
 	With this, gunicorn runs as a background process and we can quit from the server without affecting gunicorn.
 
 		gunicorn myapp.wsgi:application --bind==127.0.0.1:8001 --deamon
-<<<<<<< HEAD
-
 
 <!-- How to deploy django app on heroku :
  
@@ -137,5 +128,14 @@ Depoly on a publically acessible server:
 
 
 
+<<<<<<< HEAD
 =======
 >>>>>>> 5a86999... Create README.md
+=======
+
+
+
+        
+=======
+>>>>>>> 5a8699971c9e853d237bf2385cca80117217996e
+>>>>>>> 9bcfc6ccff12f72d2bf3fec855c530785b9901a6
