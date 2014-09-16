@@ -135,6 +135,7 @@ EMAIL_HOSST = 'loacalhost'
 EMAIL_PORT=1023
 EMAIL_HOST_USER='SEENU'
 EMAIL_HOST_PASSWORD='apple@123'
+)
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
