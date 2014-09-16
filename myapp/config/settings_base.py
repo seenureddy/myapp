@@ -109,6 +109,7 @@ WSGI_APPLICATION = 'myapp.wsgi.application'
 
 TEMPLATE_DIRS = (
     os.path.join(PROJECT_PATH, 'templates'),
+    os.path.join(PROJECT_PATH, '/templates/registration/'),
 )
 
 INSTALLED_APPS = (
@@ -124,8 +125,16 @@ INSTALLED_APPS = (
     
     'oldapp',
     'newapp',
-
+    
+    'bootstrap3',
+    'registration',
 )
+
+ACCOUNT_ACTIVATION_DAYS = 7 
+EMAIL_HOSST = 'loacalhost'
+EMAIL_PORT=1023
+EMAIL_HOST_USER='SEENU'
+EMAIL_HOST_PASSWORD='apple@123'
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to

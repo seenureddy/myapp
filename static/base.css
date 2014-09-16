@@ -1,6 +1,24 @@
-
+html, body {
+	height: 100%;
+}
 h1{
 	font-style: italic;
 	font-size: 50;
 	color: #00ff00;
+}
+.wrapper {
+	min-height: 100%
+	height auto !important;
+	height: 100%
+	margin: 0 auto -100px;
+}
+.wrapper:after{
+	content: "",
+	display: block;
+}
+
+#page-footer, .wrapper:after {
+	border-top: 2px solid rgb(218, 218, 218);
+	background-color: rgb(238, 238, 238);
+	text-shadow: rgb(217, 217, 217) 1px 1px 0px 
 }
