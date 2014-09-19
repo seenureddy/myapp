@@ -12,13 +12,12 @@ MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'myapp_db',                      # Or path to database file if using sqlite3.
-        # The following settings are not used with sqlite3:
-        'USER': 'root',
-        'PASSWORD': 'Apple@123',
-        'HOST': '127.0.0.1',                      # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
-        'PORT': '3306',                      # Set to empty string for default.
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': os.environ.get('databse_name'),
+        'USER': os.environ.get('database_user'),
+        'PASSWORD': os.environ.get('database_password'),
+        'HOST': '127.0.0.1',
+        'PORT': '3306',
     }
 }
 
@@ -79,11 +78,11 @@ STATICFILES_DIRS = (
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-#    'django.contrib.staticfiles.finders.DefaultStorageFinder',
+#   'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
 
 # Make this unique, and don't share it with anybody.
-SECRET_KEY = 'qi)k8q+^-qq&(_jm=_01e1j1n)vzq*q#by0b8hyi=@$i&&oszv'
+SECRET_KEY = os.environ.get('SECRET_KEY_MYAPP')
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
@@ -122,19 +121,22 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
-    
+
     'oldapp',
     'newapp',
-    
+
     'bootstrap3',
     'registration',
 )
 
-ACCOUNT_ACTIVATION_DAYS = 7 
-EMAIL_HOSST = 'loacalhost'
-EMAIL_PORT=1023
-EMAIL_HOST_USER='SEENU'
-EMAIL_HOST_PASSWORD='apple@123'
+ACCOUNT_ACTIVATION_DAYS = 7
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+
+EMAIL_HOST_USER = os.environ.get('DJANGO_EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.environ.get('DJANGO_EMAIL_HOST_PASSWORD')
 
 
 # A sample logging configuration. The only tangible logging
