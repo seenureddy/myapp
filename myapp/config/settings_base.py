@@ -10,17 +10,6 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.environ.get('databse_name'),
-        'USER': os.environ.get('database_user'),
-        'PASSWORD': os.environ.get('database_password'),
-        'HOST': '127.0.0.1',
-        'PORT': '3306',
-    }
-}
-
 # Hosts/domain names that are valid for this site; required if DEBUG is False
 # See https://docs.djangoproject.com/en/1.5/ref/settings/#allowed-hosts
 ALLOWED_HOSTS = []
@@ -130,7 +119,7 @@ INSTALLED_APPS = (
 )
 
 ACCOUNT_ACTIVATION_DAYS = 7
-# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
