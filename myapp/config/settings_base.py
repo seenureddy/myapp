@@ -59,7 +59,7 @@ MEDIA_URL = ''
 
 # Absolute path to the directory static files should be collected to.
 # Don't put anything in this directory yourself; store your static files
-# in apps' "static/" subdirectories and in STATICFILES_DIRS.
+# in apps' "static/" subdirectories and in STATICFIES_DIRS.
 # Example: "/var/www/example.com/static/"
 STATIC_ROOT = os.path.join(PROJECT_PATH, 'staticfiles')
 
@@ -82,7 +82,7 @@ STATICFILES_FINDERS = (
 )
 
 # Make this unique, and don't share it with anybody.
-SECRET_KEY = os.environ.get('SECRET_KEY_MYAPP')
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
