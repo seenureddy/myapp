@@ -16,8 +16,8 @@ urlpatterns = patterns('',
     url(r'^newapp/', include('newapp.urls')),
     url(r'^oldapp/', include('oldapp.urls')),
     url(r'^accounts/',include('registration.backends.default.urls')),
-    url(r'$', 'myapp.views.home', name='home'),
-    url(r'^profile/$', 'myapp.views.profile', name='profile'),
+    url(r'$', 'rackdjango.views.home', name='home'),
+    url(r'^profile/$', 'rackdjango.views.profile', name='profile'),
 
 
 )

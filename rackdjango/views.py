@@ -8,11 +8,11 @@ from django.contrib.auth.decorators import login_required
 
 def home(request):
     if (request.user.is_authenticated()):
-        return render(request, 'myapp/home.html')
-    return login(request, template_name='myapp/home.html')
+        return render(request, 'rackdjango/home.html')
+    return login(request, template_name='rackdjango/home.html')
 
 
 @login_required
 def profile(request):
-    return render(request, template_name='myapp/profile.html')
+    return render(request, template_name='rackdjango/profile.html')
  

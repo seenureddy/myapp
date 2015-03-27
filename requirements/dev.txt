@@ -1,4 +1,4 @@
-django==1.5
+django==1.8c1
 # nginx==1.6.0
 gunicorn==19.1
 django-extensions==1.4.0
