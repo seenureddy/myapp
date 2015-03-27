@@ -6,7 +6,7 @@
 
 		{% if user.is_authenticated %}
 			<ul class="nav navbar-nav navbar-right">
-				<li id="nav-username"><a href="{% url 'myapp.views.profile' %}">
+				<li id="nav-username"><a href="{% url 'rackdjango.views.profile' %}">
 					<span class="glyphicon glyphicon-user"></span> {{ user.get_username }} &nbsp; </a>
 				</li>
 				<li>
@@ -20,7 +20,7 @@
 				{% csrf_token %}
 				{% bootstrap_field form.username show_label=False %}
 				{% bootstrap_field form.password show_label=False %}
-				<input type="hidden" name="next" value="{% url 'myapp.views.home' %}" />
+				<input type="hidden" name="next" value="{% url 'rackdjango.views.home' %}" />
 				<button type="submit" class="btn btn-success">Sign in</button>
 			</form>
 		{% endif %}
