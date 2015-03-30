@@ -27,6 +27,7 @@ urlpatterns = patterns('',
     url(r'$', 'rackdjango.views.home', name='home'),
     url(r'^profile/$', 'rackdjango.views.profile', name='profile'),
     
+    url(r'^', include('appecrest.urls')),
     url(r'^', include(router.urls)),
     url(r'^api_auth/', include('rest_framework.urls', namespace='rest_framework')),
 
