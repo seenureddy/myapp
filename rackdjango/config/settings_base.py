@@ -124,9 +124,11 @@ INSTALLED_APPS = (
 
     'oldapp',
     'newapp',
+    'appecrest',
 
     'bootstrap3',
     'registration',
+    'rest_framework'
 )
 
 ACCOUNT_ACTIVATION_DAYS = 7
@@ -137,3 +139,10 @@ EMAIL_PORT = 587
 
 EMAIL_HOST_USER = os.environ.get('DJANGO_EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.environ.get('DJANGO_EMAIL_HOST_PASSWORD')
+
+
+# Rest Frame Work settings
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': ('rest_framework.permissions.IsAdminUser',),
+    'PAGE_SIZE': 10
+    }
