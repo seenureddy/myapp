@@ -39,32 +39,17 @@ class JSONResponse(HttpResponse):
         kwargs['content_type'] = 'application/json' 
         super(JSONResponse, self).__init__(content, **kwargs)
     
-class SnippetList(mixins.ListModelMixin, mixins.CreateModelMixin, generics.GenericAPIView):
+class SnippetList(generics.ListCreateAPIView):
     """
     List all the code snippet or create new snippet.
     """
     qureyset = Snippet.objects.all()
     serializers_class = SnippetSerializer
-    def get(self, request, *args, **kwargs):
-        return self.list(request, *args, **kwargs)
-
-    def post(self, request, *args, **kwargs):
-        return self.create(request, *args, **kwargs)
 
 
-class SnippetDetails(mixins.RetrieveModelMixin, mixins.UpdateModelMixin, mixins.DestroyModelMixin,
-    generics.GenericAPIView):
+class SnippetDetails(generics.RetrieveUpdateDestroyAPIView):
     """ 
     Retrieve, update or delete a code snippet.
     """
-
     qureyset = Snippet.objects.all()
     serializers_class = SnippetSerializer
-    def get(self, request, *args, **kwargs):
-        return self.retrieve(request, *args, **kwargs)
-    
-    def put(self, request, *args, **kwargs):
-        return self.update(request, *args, **kwargs)
-    
-    def delete(self, request, *args, **kwargs):
-        return self.destroy(request, *args, **kwargs)
