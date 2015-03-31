@@ -24,11 +24,11 @@ urlpatterns = patterns('',
     url(r'^newapp/', include('newapp.urls')),
     url(r'^oldapp/', include('oldapp.urls')),
     url(r'^accounts/',include('registration.backends.default.urls')),
-    url(r'$', 'rackdjango.views.home', name='home'),
+    url(r'^$', 'rackdjango.views.home', name='home'),
     url(r'^profile/$', 'rackdjango.views.profile', name='profile'),
     
-    url(r'^', include('appecrest.urls')),
-    url(r'^', include(router.urls)),
+    url(r'^restapi/', include('appecrest.urls')),
+    url(r'^user/group/sets', include(router.urls)),
     url(r'^api_auth/', include('rest_framework.urls', namespace='rest_framework')),
 
 )
