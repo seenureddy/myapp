@@ -1,10 +1,13 @@
 from django.conf.urls import url, patterns
 
 from rest_framework.urlpatterns import format_suffix_patterns
+
+from appecrest import views
+
 urlpatterns = patterns(
-    'appecrest.views',
-    url(r'^snippets/$', 'snippet_list'),
-    url(r'^snippets/(?P<pk>[0-9]+)/$', 'snippet_details'),
+    '',
+    url(r'^snippets/$', views.SnippetList.as_view()),
+    url(r'^snippets/(?P<pk>[0-9]+)/$', views.SnippetDetails.as_view()),
     )
 
 urlpatterns = format_suffix_patterns(urlpatterns)
