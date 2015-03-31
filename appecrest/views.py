@@ -3,16 +3,17 @@ from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.models import User, Group
 
-from rest_framework import status
-from rest_framework import viewsets
 from rest_framework.views import APIView
+from rest_framework.reverse import reverse
 from rest_framework import mixins, generics
 from rest_framework.response import Response
 from rest_framework.parsers import JSONParser
 from rest_framework.decorators import api_view
 from rest_framework.renderers import JSONRenderer
+from rest_framework import status, viewsets, permissions, renderers
 
 from .models import Snippet
+from .permissions import IsOwnerOrReadOnly
 from .serializers import UserSerializer, GroupSerializer, SnippetSerializer
 
 
@@ -30,6 +31,14 @@ class GroupViewSet(viewsets.ModelViewSet):
     qureyset = Group.objects.all()
     serializers_class = GroupSerializer
 
+class UserList(generics.ListAPIView):
+    queryset = User.objects.all()
+    serializers_class = UserSerializer
+
+class UserDetails(generics.RetrieveAPIView):
+    queryset = User.objects.all()
+    serializers_class = UserSerializer
+
 class JSONResponse(HttpResponse):
     """
     HttpResponse that render it's content into JSON.
@@ -45,7 +54,10 @@ class SnippetList(generics.ListCreateAPIView):
     """
     qureyset = Snippet.objects.all()
     serializers_class = SnippetSerializer
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly, )
 
+    def perform_create(self, serializers):
+        serializers.save(owner=self.request.user)
 
 class SnippetDetails(generics.RetrieveUpdateDestroyAPIView):
     """ 
@@ -53,3 +65,19 @@ class SnippetDetails(generics.RetrieveUpdateDestroyAPIView):
     """
     qureyset = Snippet.objects.all()
     serializers_class = SnippetSerializer
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly)
+
+@api_view(("GET", ))
+def api_root(request, format=None):
+    return Response({
+        'users': reverse('user-list', request=request, format=format),
+        'snippet': reverse('snippet-list', request=request, format=format)
+        })
+
+class SnippetHighlight(generics.GenericAPIView):
+    qureyset = Snippet.objects.all()
+    renderer_class = (renderers.StaticHTMLRenderer, )
+
+    def get(self, request, *args, **kwargs):
+        snippet = self.get_object()
+        return Response(snippet.highlighted) 

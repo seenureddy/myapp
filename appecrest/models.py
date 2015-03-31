@@ -1,7 +1,10 @@
 from django.db import models
 
+from pygments import highlight
 from pygments.lexers import get_all_lexers
 from pygments.styles import get_all_styles
+from pygments.lexers import get_lexer_by_name
+from pygments.formatters.html import HtmlFormatter
 
 LEXERS = [item for item in get_all_lexers() if item[1]]
 LANGUAGE_CHOICES = sorted([(item[1][0], item[0]) for item in LEXERS])
@@ -19,3 +22,15 @@ class Snippet(models.Model):
 
     class Meta:
         ordering = ('created', )
+
+    def save(self, *args, **kwargs):
+        """
+        Use the `pygments` library to create a highlighted HTML
+        representation of the code snippet.
+        """
+        lexers = get_lexer_by_name(slef.language)
+        linenos = self.linenos and 'table' or False
+        title = slef.title and {'title': self.title} or {}
+        formatters = HtmlFormatter(style=self.style, linenos=linenos, full=True, **options)
+        self.highlighted = highlight(self.code, lexers, formatters)
+        supper(Snippet, self).save(*args, **kwargs)
