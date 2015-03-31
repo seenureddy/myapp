@@ -8,8 +8,8 @@ from rest_framework.reverse import reverse
 from rest_framework import mixins, generics
 from rest_framework.response import Response
 from rest_framework.parsers import JSONParser
-from rest_framework.decorators import api_view, link
 from rest_framework.renderers import JSONRenderer
+from rest_framework.decorators import api_view, detail_route
 from rest_framework import status, viewsets, permissions, renderers
 
 from .models import Snippet
@@ -40,7 +40,7 @@ class JSONResponse(HttpResponse):
         kwargs['content_type'] = 'application/json' 
         super(JSONResponse, self).__init__(content, **kwargs)
     
-class SnippetViewSets(viewsets.ModelViewSet):
+class SnippetViewSet(viewsets.ModelViewSet):
     """
     List all the code snippet or create new snippet.
     """
@@ -48,13 +48,14 @@ class SnippetViewSets(viewsets.ModelViewSet):
     serializers_class = SnippetSerializer
     permission_classes = (permissions.IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly, )
     
-    @link(renderer_class=[renderers.StaticHTMLRenderer])
+    @detail_route(renderer_classes=[renderers.StaticHTMLRenderer])
     def highlight(self, request, *args, **kwargs):
         snippet = self.get_object()
         return Response(snippet.highlighted)
 
-    def pre_save(self, obj):
-        obj.owner = self.request.user
+    def perform_create(self, serializer):
+        serializer.save(owner=self.request.user)
+
 
 @api_view(("GET", ))
 def api_root(request, format=None):
