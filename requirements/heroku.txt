@@ -1,11 +1,4 @@
-Django==1.8c1
-static3==0.5.1
-wsgiref==0.1.2
-argparse==1.2.1
+-r common.txt
+
 psycopg2==2.5.4
-dj-static==0.0.6
-sqlparse==0.1.11
 gunicorn==19.1.1
-django-bootstrap3
-dj-database-url==0.3.0
-django-registration-redux==1.1
