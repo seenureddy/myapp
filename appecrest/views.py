@@ -28,7 +28,7 @@ class GroupViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows groups to be viewed or edited.
     """
-    qureyset = Group.objects.all()
+    queryset = Group.objects.all()
     serializers_class = GroupSerializer
 
 class JSONResponse(HttpResponse):
@@ -44,8 +44,8 @@ class SnippetViewSet(viewsets.ModelViewSet):
     """
     List all the code snippet or create new snippet.
     """
-    qureyset = Snippet.objects.all()
-    serializers_class = SnippetSerializer
+    queryset = Snippet.objects.all()
+    serializer_class = SnippetSerializer
     permission_classes = (permissions.IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly, )
     
     @detail_route(renderer_classes=[renderers.StaticHTMLRenderer])
