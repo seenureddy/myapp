@@ -1,4 +1,3 @@
-django==1.8c1
-gunicorn==19.1
+-r commont.txt
+
 django-extensions==1.4.0
-django-registration==1.0

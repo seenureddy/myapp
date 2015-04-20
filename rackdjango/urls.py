@@ -1,13 +1,17 @@
 from django.conf.urls import patterns, include, url
-from rest_framework import routers
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
 admin.autodiscover()
 
+from rest_framework import routers
+from rest_framework.routers import DefaultRouter
+
 from appecrest import views
 
+
 router = routers.DefaultRouter()
+router.register(r'snippets', views.SnippetViewSet, base_name='snippets')
 router.register(r'users', views.UserViewSet, base_name='users')
 router.register(r'groups', views.GroupViewSet, base_name='groups')
 
