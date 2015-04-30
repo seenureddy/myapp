@@ -7,13 +7,13 @@ import braintree
 
 
 def home(request):
-	context = RequestContext(request)
-	return render_to_response('oldapp/oldhome.html', {}, context)
+    context = RequestContext(request)
+    return render_to_response('oldapp/oldhome.html', {}, context)
 
 
 def credit_card(request):
-	context = RequestContext(request)
-	return render_to_response('oldapp/credit_card_form.html', {}, context)
+    context = RequestContext(request)
+    return render_to_response('oldapp/credit_card_form.html', {}, context)
 
 
 @csrf_exempt
@@ -23,3 +23,13 @@ def client_token(request):
       "customer_id": a_customer_id
     })
     return HttpResponse("ClientToken : %s" % (token)) 
+
+
+@csrf_exempt
+def purchase(request):
+    nonce = request.POST.get("payment_method_nonce")
+    result = braintree.Transaction.sale({
+        "amount": "10.00",
+        "payment_method_token": str(nonce)
+    })
+    return HttpResponse(" payment_method_nonce, result : %s %s" % (nonce, result))
