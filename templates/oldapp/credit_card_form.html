@@ -2,23 +2,9 @@
 
 {% block content %}
     <div class="container">
-	    <h1>Braintree Credit Card Transaction Form</h1>
-	    <div>
-	      <form action="/create_transaction" method="POST" id="braintree-payment-form">
-	        <p>
-	          <label>Card Number</label>
-	          <input type="text" size="20" autocomplete="off" data-encrypted-name="number" />
-	        </p>
-	        <p>
-	          <label>CVV</label>
-	          <input type="text" size="4" autocomplete="off" data-encrypted-name="cvv" />
-	        </p>
-	        <p>
-	          <label>Expiration (MM/YYYY)</label>
-	          <input type="text" size="2" data-encrypted-name="month" /> / <input type="text" size="4" data-encrypted-name="year" />
-	        </p>
-	        <input type="submit" id="submit" />
-	      </form>
-	    </div>
+	    <form id="checkout" method="post" action="/oldapp/client_token/">
+		  <div id="dropin"></div>
+		  <input type="submit" value="Pay">
+		</form>
 	</div>
 {% endblock %}

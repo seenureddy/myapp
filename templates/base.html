@@ -8,7 +8,12 @@
         <title>{% block title %}HOME{% endblock %}</title>
         {% bootstrap_css %}
         <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}base.css">
-        <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}js/braintree.js">
+
+        <script src="https://js.braintreegateway.com/v2/braintree.js"></script>
+        <script
+          data-main="{{ STATIC_URL }}js/main.js"
+          src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"
+        ></script>
     </head>
     <body>
         <div class="wrapper">

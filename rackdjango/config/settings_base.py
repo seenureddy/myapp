@@ -1,5 +1,7 @@
 import os
 
+import braintree
+
 DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
@@ -9,17 +11,6 @@ ADMINS = (
 )
 
 MANAGERS = ADMINS
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': 'myapp_db',
-#         'USER': '',
-#         'PASSWORD': '',
-#         'HOST': '',
-#         'PORT': '',
-#     }
-# }
 
 # Hosts/domain names that are valid for this site; required if DEBUG is False
 # See https://docs.djangoproject.com/en/1.5/ref/settings/#allowed-hosts
@@ -146,3 +137,11 @@ REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': ('rest_framework.permissions.IsAdminUser',),
     'PAGE_SIZE': 10
     }
+
+# Braintree setup
+braintree.Configuration.configure(
+    braintree.Environment.Sandbox,
+    'djjr3jtjg63j26yh',
+    'xpgvyvvvjks7b6cf',
+    'cdb22667335067040aeda648b15049d3'
+)
